@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: kit-auth
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/kit_auth
+    username: kit_auth_user
+    password: 88888888
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework.security: INFO
+    org.hibernate.SQL: INFO
