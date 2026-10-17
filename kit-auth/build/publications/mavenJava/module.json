@@ -1,0 +1,117 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.siugi.backendkit",
+    "module": "kit-auth",
+    "version": "0.0.1-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.8.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-security"
+        }
+      ],
+      "files": [
+        {
+          "name": "kit-auth-0.0.1-SNAPSHOT.jar",
+          "url": "kit-auth-0.0.1-SNAPSHOT.jar",
+          "size": 12946,
+          "sha512": "3850e2192b2bd07aae97442c7384a4603da640ee29c4bd262611fe61f18d712a5c8897c658cbf4a426e0c64cac3e1aabdff9d9b26097cecb286a4970fe384688",
+          "sha256": "7ec9d04efaba79da864d41481b9453ca2295b10a666193e3e8dc37ebfbd8f3e6",
+          "sha1": "b3c852abe417fe3d907fa7558b958cb20ab7dc0a",
+          "md5": "168f6d20992af1ebdb488182bb182d8a"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-web"
+        },
+        {
+          "group": "io.jsonwebtoken",
+          "module": "jjwt-api",
+          "version": {
+            "requires": "0.12.6"
+          }
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-security"
+        },
+        {
+          "group": "io.jsonwebtoken",
+          "module": "jjwt-impl",
+          "version": {
+            "requires": "0.12.6"
+          }
+        },
+        {
+          "group": "io.jsonwebtoken",
+          "module": "jjwt-jackson",
+          "version": {
+            "requires": "0.12.6"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "kit-auth-0.0.1-SNAPSHOT.jar",
+          "url": "kit-auth-0.0.1-SNAPSHOT.jar",
+          "size": 12946,
+          "sha512": "3850e2192b2bd07aae97442c7384a4603da640ee29c4bd262611fe61f18d712a5c8897c658cbf4a426e0c64cac3e1aabdff9d9b26097cecb286a4970fe384688",
+          "sha256": "7ec9d04efaba79da864d41481b9453ca2295b10a666193e3e8dc37ebfbd8f3e6",
+          "sha1": "b3c852abe417fe3d907fa7558b958cb20ab7dc0a",
+          "md5": "168f6d20992af1ebdb488182bb182d8a"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "kit-auth-0.0.1-SNAPSHOT-sources.jar",
+          "url": "kit-auth-0.0.1-SNAPSHOT-sources.jar",
+          "size": 8995,
+          "sha512": "641607699cee8c87265c26bbc6d5e1a9796713280fc14baa2829240ec7c46c782a0d8a0e3a2824d74c93bb3b53d258b3fd9cdb9a5d3d03a799acf02bbec61665",
+          "sha256": "bae87a5f7a09f234a9b88d82f8ae40e96715f930e6c4b4e6f904521190d7195e",
+          "sha1": "53d96d90fe90be1cc6a88349b1505b8db1350d98",
+          "md5": "68e6aa42e4a0db4ab96d76f68af22b54"
+        }
+      ]
+    }
+  ]
+}
