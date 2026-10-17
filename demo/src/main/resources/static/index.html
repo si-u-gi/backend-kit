@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kit Auth</title>
+    <style>
+        *{box-sizing:border-box}
+        body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0b1020;color:#f1f5f9;font-family:Arial,sans-serif}
+        .card{width:min(410px,92vw);padding:32px;border:1px solid #29334d;border-radius:20px;background:#11182b;box-shadow:0 20px 60px #0005}
+        h1{margin:0 0 8px;font-size:28px}
+        .muted{color:#94a3b8;font-size:14px}
+        .tabs{display:flex;gap:8px;margin:24px 0}
+        button{cursor:pointer;border:0;border-radius:9px;padding:12px;color:white;font-weight:bold}
+        .tab{flex:1;background:#202943}
+        .tab.active,.submit{background:linear-gradient(100deg,#3b82f6,#8b5cf6)}
+        input{width:100%;margin:8px 0;padding:14px;border:1px solid #334155;border-radius:9px;background:#0b1020;color:white}
+        .submit{width:100%;margin-top:14px}
+        .submit:disabled{opacity:.6;cursor:wait}
+        #result{overflow-wrap:anywhere;white-space:pre-wrap;line-height:1.5;font-size:13px}
+    </style>
+</head>
+<body>
+<main class="card">
+    <h1 id="heading">로그인</h1>
+    <p class="muted">Kit Auth · Authentication Demo</p>
+    <div class="tabs">
+        <button class="tab active" id="loginTab" type="button">로그인</button>
+        <button class="tab" id="signupTab" type="button">회원가입</button>
+    </div>
+    <form id="authForm">
+        <label for="email">이메일</label>
+        <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+        <label for="password">비밀번호</label>
+        <input id="password" type="password" placeholder="비밀번호 입력" autocomplete="current-password" minlength="1" required>
+        <button class="submit" id="submit" type="submit">로그인</button>
+    </form>
+    <p id="result" class="muted" role="status"></p>
+</main>
+<script>
+    let mode = "login";
+    let accessToken = null;
+    const $ = id => document.getElementById(id);
+
+    function setMode(next) {
+        mode = next;
+        $("heading").textContent = mode === "login" ? "로그인" : "회원가입";
+        $("submit").textContent = mode === "login" ? "로그인" : "회원가입";
+        $("loginTab").classList.toggle("active", mode === "login");
+        $("signupTab").classList.toggle("active", mode === "signup");
+        $("password").autocomplete = mode === "login" ? "current-password" : "new-password";
+        $("result").textContent = "";
+    }
+    $("loginTab").onclick = () => setMode("login");
+    $("signupTab").onclick = () => setMode("signup");
+
+    $("authForm").addEventListener("submit", async event => {
+        event.preventDefault();
+        $("submit").disabled = true;
+        $("result").textContent = "요청 중...";
+        try {
+            const response = await fetch(
+                mode === "login" ? "/api/auth/login" : "/api/auth/signup",
+                {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({
+                        email: $("email").value.trim(),
+                        password: $("password").value
+                    })
+                }
+            );
+            const body = await response.text();
+            let data;
+            try { data = body ? JSON.parse(body) : null; } catch { data = body; }
+
+            if (!response.ok) {
+                $("result").textContent = `실패 · HTTP ${response.status}\n` +
+                    (typeof data === "string" ? data : JSON.stringify(data, null, 2));
+                return;
+            }
+
+            if (mode === "login" && data && data.accessToken) {
+                accessToken = data.accessToken;
+                $("result").textContent =
+                    "로그인 성공!\n토큰 유형: " + (data.tokenType || "Bearer") +
+                    "\nAccess Token:\n" + accessToken;
+            } else {
+                $("result").textContent = `요청 성공 · HTTP ${response.status}\n` +
+                    (typeof data === "string" ? data : JSON.stringify(data, null, 2));
+                if (mode === "signup") setMode("login");
+            }
+        } catch (error) {
+            $("result").textContent =
+                "요청 실패: " + error.message +
+                "\n서버가 실행 중인지 확인해 주세요.";
+        } finally {
+            $("submit").disabled = false;
+        }
+    });
+</script>
+</body>
+</html>

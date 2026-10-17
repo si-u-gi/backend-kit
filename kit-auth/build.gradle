@@ -1,18 +1,16 @@
 plugins {
 	id 'java-library'
-	id 'maven-publish'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id 'com.vanniktech.maven.publish' version '0.37.0'
 }
 
-group = 'dev.siugi.backendkit'
-version = '0.0.1-SNAPSHOT'
+group = 'io.github.si-u-gi'
+version = '1.0.1'
 
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(21)
 	}
-
-	withSourcesJar()
 }
 
 repositories {
@@ -26,21 +24,15 @@ dependencyManagement {
 }
 
 dependencies {
-	// Spring Security 공통 인증 기능
+	api 'org.springframework.boot:spring-boot-starter-web'
 	api 'org.springframework.boot:spring-boot-starter-security'
 
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-
-	// JWT 구현에 사용할 라이브러리는 다음 단계에서 추가
-	implementation 'io.jsonwebtoken:jjwt-api:0.12.6'
+	api 'io.jsonwebtoken:jjwt-api:0.12.6'
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6'
 
-	// 테스트
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
-
-	// JUnit 테스트 실행에 필요한 런처
+	testImplementation 'org.springframework.boot:spring-boot-starter-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
@@ -48,10 +40,47 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			from components.java
+mavenPublishing {
+	coordinates('io.github.si-u-gi', 'kit-auth', '1.0.1')
+
+	publishToMavenCentral()
+	signAllPublications()
+
+	pom {
+		name = 'kit-auth'
+		description = 'Reusable authentication library for Spring Boot applications'
+		url = 'https://github.com/si-u-gi/backend-kit'
+
+		licenses {
+			license {
+				name = 'The MIT License'
+				url = 'https://opensource.org/licenses/MIT'
+			}
+		}
+
+		developers {
+			developer {
+				id = 'si-u-gi'
+				name = 'si-u-gi'
+			}
+		}
+
+		scm {
+			url = 'https://github.com/si-u-gi/backend-kit'
+			connection = 'scm:git:git://github.com/si-u-gi/backend-kit.git'
+			developerConnection = 'scm:git:ssh://github.com/si-u-gi/backend-kit.git'
 		}
 	}
+}
+
+signing {
+	useGpgCmd()
+}
+
+signing {
+	useGpgCmd()
+}
+
+tasks.withType(Sign).configureEach {
+	enabled = false
 }
