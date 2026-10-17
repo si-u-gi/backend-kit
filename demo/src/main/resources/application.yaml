@@ -1,3 +1,9 @@
 spring:
   application:
     name: demo
+
+kit:
+  auth:
+    jwt:
+      secret: oRFhnlZnydt4sYlZzYbqj30CB7kKQfrgiT1uHE+0Cg0=
+      access-token-expiration-ms: 3600000

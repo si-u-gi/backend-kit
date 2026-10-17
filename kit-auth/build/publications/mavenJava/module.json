@@ -33,11 +33,11 @@
         {
           "name": "kit-auth-0.0.1-SNAPSHOT.jar",
           "url": "kit-auth-0.0.1-SNAPSHOT.jar",
-          "size": 12946,
-          "sha512": "3850e2192b2bd07aae97442c7384a4603da640ee29c4bd262611fe61f18d712a5c8897c658cbf4a426e0c64cac3e1aabdff9d9b26097cecb286a4970fe384688",
-          "sha256": "7ec9d04efaba79da864d41481b9453ca2295b10a666193e3e8dc37ebfbd8f3e6",
-          "sha1": "b3c852abe417fe3d907fa7558b958cb20ab7dc0a",
-          "md5": "168f6d20992af1ebdb488182bb182d8a"
+          "size": 13790,
+          "sha512": "30f998d82d2849f012cbe38adc601bf25c407de9c4292b114631036539ea2356dae050b2f848b92f99d920c14faec28bf5edff88b47c5b3889bea79e9bd213c2",
+          "sha256": "e18d1f169d566df28253f33023c4418d16e601c95f6351a57319b3f8a8d010d9",
+          "sha1": "9f8bf492ab4aad8c729afc7488a1c8548919bfe1",
+          "md5": "e104f870cd4e7a579af7a4b4f0f87c3a"
         }
       ]
     },
@@ -85,11 +85,11 @@
         {
           "name": "kit-auth-0.0.1-SNAPSHOT.jar",
           "url": "kit-auth-0.0.1-SNAPSHOT.jar",
-          "size": 12946,
-          "sha512": "3850e2192b2bd07aae97442c7384a4603da640ee29c4bd262611fe61f18d712a5c8897c658cbf4a426e0c64cac3e1aabdff9d9b26097cecb286a4970fe384688",
-          "sha256": "7ec9d04efaba79da864d41481b9453ca2295b10a666193e3e8dc37ebfbd8f3e6",
-          "sha1": "b3c852abe417fe3d907fa7558b958cb20ab7dc0a",
-          "md5": "168f6d20992af1ebdb488182bb182d8a"
+          "size": 13790,
+          "sha512": "30f998d82d2849f012cbe38adc601bf25c407de9c4292b114631036539ea2356dae050b2f848b92f99d920c14faec28bf5edff88b47c5b3889bea79e9bd213c2",
+          "sha256": "e18d1f169d566df28253f33023c4418d16e601c95f6351a57319b3f8a8d010d9",
+          "sha1": "9f8bf492ab4aad8c729afc7488a1c8548919bfe1",
+          "md5": "e104f870cd4e7a579af7a4b4f0f87c3a"
         }
       ]
     },
@@ -105,11 +105,11 @@
         {
           "name": "kit-auth-0.0.1-SNAPSHOT-sources.jar",
           "url": "kit-auth-0.0.1-SNAPSHOT-sources.jar",
-          "size": 8995,
-          "sha512": "641607699cee8c87265c26bbc6d5e1a9796713280fc14baa2829240ec7c46c782a0d8a0e3a2824d74c93bb3b53d258b3fd9cdb9a5d3d03a799acf02bbec61665",
-          "sha256": "bae87a5f7a09f234a9b88d82f8ae40e96715f930e6c4b4e6f904521190d7195e",
-          "sha1": "53d96d90fe90be1cc6a88349b1505b8db1350d98",
-          "md5": "68e6aa42e4a0db4ab96d76f68af22b54"
+          "size": 8979,
+          "sha512": "b1b0a1901c306ff7054f28920aac61092b1cba703407e310d000a1f32a7005ff4f7af33a10ee8cc298e30289aaaeb0707eb8c43b7e7971dc11b7963bd9bd3a87",
+          "sha256": "ecd345b63c7d2ea367232f76cd0291f21a1baa1e337c71edae9dfb305299a092",
+          "sha1": "2ec553265e83bd8ad54e5eaba7e5cdf89702337f",
+          "md5": "ad9a16dcdbd8ce4db1879f8b0c893891"
         }
       ]
     }

@@ -24,46 +24,46 @@ public class AuthController {
         this.authService = authService;
     }
 
-//    @PostMapping("/signup")
-//    public ResponseEntity<?> signup(
-//            @RequestBody SignupRequest request
-//    ) {
-//        try {
-//            AuthUser user = authService.signup(
-//                    request.email(),
-//                    request.password()
-//            );
-//
-//            return ResponseEntity
-//                    .status(HttpStatus.CREATED)
-//                    .body(Map.of(
-//                            "id", user.id(),
-//                            "email", user.email()
-//                    ));
-//
-//        } catch (IllegalArgumentException e) {
-//            return ResponseEntity
-//                    .badRequest()
-//                    .body(Map.of("message", e.getMessage()));
-//        }
-//    }
-//
-//    @PostMapping("/login")
-//    public ResponseEntity<?> login(
-//            @RequestBody LoginRequest request
-//    ) {
-//        try {
-//            return ResponseEntity.ok(
-//                    authService.login(
-//                            request.email(),
-//                            request.password()
-//                    )
-//            );
-//
-//        } catch (IllegalArgumentException e) {
-//            return ResponseEntity
-//                    .status(HttpStatus.UNAUTHORIZED)
-//                    .body(Map.of("message", e.getMessage()));
-//        }
-//    }
+    @PostMapping("/signup")
+    public ResponseEntity<?> signup(
+            @RequestBody SignupRequest request
+    ) {
+        try {
+            AuthUser user = authService.signup(
+                    request.email(),
+                    request.password()
+            );
+
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body(Map.of(
+                            "id", user.id(),
+                            "email", user.email()
+                    ));
+
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(Map.of("message", e.getMessage()));
+        }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(
+            @RequestBody LoginRequest request
+    ) {
+        try {
+            return ResponseEntity.ok(
+                    authService.login(
+                            request.email(),
+                            request.password()
+                    )
+            );
+
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of("message", e.getMessage()));
+        }
+    }
 }
