@@ -10,3 +10,16 @@ kit:
     csrf:
       enabled: true
       cookie-based: true
+    security:
+      public-paths:
+        - /
+        - /index.html
+        - /login.html
+        - /signup.html
+        - /css/**
+        - /js/**
+        - /images/**
+
+kit-auth:
+  page:
+    enabled: false

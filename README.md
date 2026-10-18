@@ -4,7 +4,7 @@ Spring Boot 4 authentication library and consumer demo.
 
 ## Structure
 - `kit-auth/`: reusable auth library with login/signup UI, JWT and CSRF.
-- `demo/`: integration demo. Its `DemoAuthUserService` stores users **only in memory**.
+- `kit-auth-demo`: integration demo. Its `DemoAuthUserService` stores users **only in memory**.
 
 ## Run locally (PowerShell)
 Set a unique Base64-encoded 32-byte-or-longer JWT signing key (do not commit it):
@@ -28,3 +28,13 @@ Visit `http://localhost:8080/login` or `/signup`.
 - JWT is returned in the response body, not persisted across browser refreshes.
 - Applications providing their own `SecurityFilterChain` must explicitly integrate the JWT filter and auth route rules.
 - Never put real JWT secrets in source control.
+
+
+
+그다음 kit-auth에서:
+.\gradlew.bat publishToMavenLocal
+
+demo에서:
+.\gradlew.bat --refresh-dependencies clean bootRun
+
+http://localhost:8080/kit-auth/index.html

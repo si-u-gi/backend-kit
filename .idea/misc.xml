@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$PROJECT_DIR$/demo" />
     <file type="web" url="file://$PROJECT_DIR$/kit-auth" />
+    <file type="web" url="file://$PROJECT_DIR$/kit-auth-demo" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="openjdk-27" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
