@@ -91,7 +91,6 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="annotations">@RestController
 @RequestMapping("/api/auth")
-@ConditionalOnBean(<a href="../service/AuthService.html" title="class in dev.siugi.backendkit.kit_auth.service">AuthService.class</a>)
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">AuthController</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
 </section>
@@ -122,11 +121,14 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;?&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#login(dev.siugi.backendkit.kit_auth.controller.dto.LoginRequest)" class="member-name-link">login</a><wbr>(<a href="dto/LoginRequest.html" title="class in dev.siugi.backendkit.kit_auth.controller.dto">LoginRequest</a>&nbsp;request)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#csrf(org.springframework.security.web.csrf.CsrfToken)" class="member-name-link">csrf</a><wbr>(org.springframework.security.web.csrf.CsrfToken&nbsp;csrfToken)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;?&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#signup(dev.siugi.backendkit.kit_auth.controller.dto.SignupRequest)" class="member-name-link">signup</a><wbr>(<a href="dto/SignupRequest.html" title="class in dev.siugi.backendkit.kit_auth.controller.dto">SignupRequest</a>&nbsp;request)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#login(dev.siugi.backendkit.kit_auth.controller.dto.LoginRequest)" class="member-name-link">login</a><wbr>(<a href="dto/LoginRequest.html" title="class in dev.siugi.backendkit.kit_auth.controller.dto">LoginRequest</a>&nbsp;request)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.springframework.http.ResponseEntity<wbr>&lt;?&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#signup(dev.siugi.backendkit.kit_auth.controller.dto.SignupRequest)" class="member-name-link">signup</a><wbr>(<a href="dto/SignupRequest.html" title="class in dev.siugi.backendkit.kit_auth.controller.dto">SignupRequest</a>&nbsp;request)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
 </div>
@@ -172,6 +174,14 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="annotations">@PostMapping("/login")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;?&gt;</span>&nbsp;<span class="element-name">login</span><wbr><span class="parameters">(@RequestBody
  <a href="dto/LoginRequest.html" title="class in dev.siugi.backendkit.kit_auth.controller.dto">LoginRequest</a>&nbsp;request)</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="csrf(org.springframework.security.web.csrf.CsrfToken)">
+<h3>csrf</h3>
+<div class="member-signature"><span class="annotations">@GetMapping("/csrf")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">org.springframework.http.ResponseEntity&lt;?&gt;</span>&nbsp;<span class="element-name">csrf</span><wbr><span class="parameters">(@RequestAttribute(name="_csrf",required=false)
+ org.springframework.security.web.csrf.CsrfToken&nbsp;csrfToken)</span></div>
 </section>
 </li>
 </ul>

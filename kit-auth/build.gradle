@@ -77,10 +77,6 @@ signing {
 	useGpgCmd()
 }
 
-signing {
-	useGpgCmd()
-}
-
 tasks.withType(Sign).configureEach {
 	enabled = false
 }

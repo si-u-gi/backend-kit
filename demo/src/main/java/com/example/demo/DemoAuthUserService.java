@@ -20,12 +20,12 @@ public class DemoAuthUserService implements AuthUserService {
         if (email == null) {
             return Optional.empty();
         }
-        return Optional.ofNullable(users.get(email.trim().toLowerCase()));
+        return Optional.ofNullable(users.get(email.trim().toLowerCase(java.util.Locale.ROOT)));
     }
 
     @Override
     public AuthUser createUser(String email, String passwordHash) {
-        String key = email.trim().toLowerCase();
+        String key = email.trim().toLowerCase(java.util.Locale.ROOT);
 
         AuthUser user = new AuthUser(
                 UUID.randomUUID().toString(),

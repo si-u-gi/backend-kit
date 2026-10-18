@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 | Kit Auth</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: system-ui, -apple-system,
+            "Segoe UI", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f6f8;
+            color: #17191f;
+        }
+
+        .card {
+            width: min(100% - 32px, 420px);
+            padding: 36px;
+            background: #fff;
+            border: 1px solid #e9ebef;
+            border-radius: 16px;
+            box-shadow: 0 12px 36px rgba(0,0,0,.05);
+        }
+
+        .brand {
+            margin-bottom: 8px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #5266df;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        .subtitle {
+            margin: 0 0 28px;
+            color: #777e8a;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 26px;
+            padding: 4px;
+            background: #f3f4f7;
+            border-radius: 10px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 11px;
+            border: 0;
+            border-radius: 8px;
+            background: transparent;
+            color: #747b87;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .tab.active {
+            background: white;
+            color: #252a36;
+            box-shadow: 0 2px 6px rgba(0,0,0,.06);
+        }
+
+        label {
+            display: block;
+            margin: 0 0 8px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            height: 46px;
+            margin-bottom: 20px;
+            padding: 0 13px;
+            border: 1px solid #dfe2e8;
+            border-radius: 9px;
+            outline: none;
+            font: inherit;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #5266df;
+            box-shadow: 0 0 0 3px rgba(82,102,223,.12);
+        }
+
+        .submit {
+            width: 100%;
+            height: 47px;
+            border: 0;
+            border-radius: 9px;
+            background: #5266df;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .submit:hover {
+            background: #4054ca;
+        }
+
+        .submit:disabled {
+            opacity: .6;
+            cursor: wait;
+        }
+
+        .message {
+            margin-top: 18px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
+        .message:empty {
+            display: none;
+        }
+
+        .message.success {
+            background: #ecfdf3;
+            color: #087443;
+        }
+
+        .message.error {
+            background: #fff0f0;
+            color: #b42318;
+        }
+
+        .footer {
+            margin-top: 26px;
+            text-align: center;
+            font-size: 12px;
+            color: #a0a5af;
+        }
+    </style>
+</head>
+<body>
+
+<main class="card">
+    <div class="brand">KIT AUTH</div>
+
+    <h1 id="heading">로그인</h1>
+    <p class="subtitle">계정에 로그인하여 계속하세요.</p>
+
+    <div class="tabs">
+        <button type="button" class="tab active"
+                id="loginTab">로그인</button>
+        <button type="button" class="tab"
+                id="signupTab">회원가입</button>
+    </div>
+
+    <form id="authForm">
+        <label for="email">이메일</label>
+        <input
+                id="email"
+                type="email"
+                placeholder="name@example.com"
+                autocomplete="email"
+                required
+        >
+
+        <label for="password">비밀번호</label>
+        <input
+                id="password"
+                type="password"
+                placeholder="비밀번호 입력"
+                autocomplete="current-password"
+                required
+        >
+
+        <button type="submit" class="submit"
+                id="submit">로그인</button>
+    </form>
+
+    <div id="result" class="message"
+         role="status" aria-live="polite"></div>
+
+    <div class="footer">Powered by Kit Auth</div>
+</main>
+
+<script>
+    const $ = id => document.getElementById(id);
+
+    let mode = "login";
+    let accessToken = null;
+
+    function setMode(next) {
+        mode = next;
+
+        $("heading").textContent =
+            mode === "login" ? "로그인" : "회원가입";
+
+        $("submit").textContent =
+            mode === "login" ? "로그인" : "회원가입";
+
+        document.querySelector(".subtitle").textContent =
+            mode === "login"
+                ? "계정에 로그인하여 계속하세요."
+                : "새 계정을 생성하세요.";
+
+        $("loginTab").classList.toggle(
+            "active", mode === "login"
+        );
+
+        $("signupTab").classList.toggle(
+            "active", mode === "signup"
+        );
+
+        $("password").autocomplete =
+            mode === "login"
+                ? "current-password"
+                : "new-password";
+
+        $("result").textContent = "";
+        $("result").className = "message";
+    }
+
+    $("loginTab").onclick = () => setMode("login");
+    $("signupTab").onclick = () => setMode("signup");
+
+    // /signup 주소로 접속하면 회원가입 탭 선택
+    if (new URLSearchParams(location.search)
+        .get("mode") === "signup") {
+        setMode("signup");
+    }
+
+    async function getCsrfToken() {
+        const response = await fetch("/api/auth/csrf", {
+            method: "GET",
+            credentials: "same-origin",
+            cache: "no-store"
+        });
+
+        if (!response.ok) {
+            throw new Error(
+                "CSRF 토큰 발급 실패: HTTP " + response.status
+            );
+        }
+
+        const csrf = await response.json();
+
+        if (!csrf.token || !csrf.headerName) {
+            throw new Error("CSRF 응답 형식이 올바르지 않습니다.");
+        }
+
+        return csrf;
+    }
+
+    $("authForm").addEventListener("submit", async event => {
+        event.preventDefault();
+
+        const submitMode = mode;
+        const submitButton = $("submit");
+        const result = $("result");
+
+        submitButton.disabled = true;
+        result.className = "message";
+        result.textContent = "";
+
+        try {
+            const csrf = await getCsrfToken();
+
+            const endpoint = submitMode === "login"
+                ? "/api/auth/login"
+                : "/api/auth/signup";
+
+            const response = await fetch(endpoint, {
+                method: "POST",
+                credentials: "same-origin",
+                headers: {
+                    "Content-Type": "application/json",
+                    [csrf.headerName]: csrf.token
+                },
+                body: JSON.stringify({
+                    email: $("email").value.trim(),
+                    password: $("password").value
+                })
+            });
+
+            const raw = await response.text();
+
+            let data;
+            try {
+                data = raw ? JSON.parse(raw) : null;
+            } catch {
+                data = raw;
+            }
+
+            if (!response.ok) {
+                result.className = "message error";
+
+                result.textContent =
+                    "요청 실패 (HTTP " + response.status + ")";
+
+                return;
+            }
+
+            if (submitMode === "login") {
+                if (!data || !data.accessToken) {
+                    throw new Error(
+                        "로그인 응답에 Access Token이 없습니다."
+                    );
+                }
+
+                accessToken = data.accessToken;
+
+                result.className = "message success";
+                result.textContent = "로그인에 성공했습니다.";
+
+                // JWT는 현재 페이지 메모리에만 보관합니다.
+                // 인증된 API 호출 시 Authorization 헤더에
+                // Bearer 토큰을 넣어 사용하면 됩니다.
+
+            } else {
+                setMode("login");
+                $("password").value = "";
+
+                result.className = "message success";
+                result.textContent =
+                    "회원가입이 완료되었습니다. 로그인해 주세요.";
+            }
+
+        } catch (error) {
+            result.className = "message error";
+            result.textContent = error.message;
+
+        } finally {
+            submitButton.disabled = false;
+        }
+    });
+</script>
+
+</body>
+</html>

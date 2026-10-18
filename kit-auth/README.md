@@ -1,7 +1,7 @@
-/api/auth/signup
-email, password
+# kit-auth
 
-/api/auth/login
-email, password
+Authentication endpoints: `POST /api/auth/signup`, `POST /api/auth/login`, `GET /api/auth/csrf`.
+Default login page: `/login`; signup page: `/signup`.
 
-AuthUserService의 구현체 필요함.
+Currently requires an `AuthUserService` bean and `kit.auth.jwt.secret` (Base64 signing key).
+For a working consumer example, see `../demo`.

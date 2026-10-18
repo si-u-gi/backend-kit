@@ -7,6 +7,6 @@ kit:
     jwt:
       secret: oRFhnlZnydt4sYlZzYbqj30CB7kKQfrgiT1uHE+0Cg0=
       access-token-expiration-ms: 3600000
-  api:
-    login-url: ${KIT_AUTH_LOGIN_URL:}
-    signup-url: ${KIT_AUTH_SIGNUP_URL:}
+    csrf:
+      enabled: true
+      cookie-based: true

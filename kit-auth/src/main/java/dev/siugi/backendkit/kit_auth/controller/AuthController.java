@@ -7,15 +7,14 @@ import dev.siugi.backendkit.kit_auth.user.AuthUser;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 
 @RestController
 @RequestMapping("/api/auth")
-@ConditionalOnBean(AuthService.class)
 public class AuthController {
 
     private final AuthService authService;
@@ -65,5 +64,28 @@ public class AuthController {
                     .status(HttpStatus.UNAUTHORIZED)
                     .body(Map.of("message", e.getMessage()));
         }
+    }
+
+
+    @GetMapping("/csrf")
+    public ResponseEntity<?> csrf(
+            @RequestAttribute(
+                    name = "_csrf",
+                    required = false
+            ) CsrfToken csrfToken
+    ) {
+        if (csrfToken == null) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(Map.of(
+                            "message", "CSRF protection is disabled"
+                    ));
+        }
+
+        return ResponseEntity.ok(Map.of(
+                "headerName", csrfToken.getHeaderName(),
+                "parameterName", csrfToken.getParameterName(),
+                "token", csrfToken.getToken()
+        ));
     }
 }

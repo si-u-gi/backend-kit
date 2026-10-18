@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="kit-auth">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/kit-auth.zip!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

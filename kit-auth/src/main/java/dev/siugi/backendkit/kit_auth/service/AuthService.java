@@ -36,6 +36,8 @@ public class AuthService {
             );
         }
 
+        email = email.trim().toLowerCase(java.util.Locale.ROOT);
+
         if (authUserService.findByEmail(email).isPresent()) {
             throw new IllegalArgumentException(
                     "이미 가입된 이메일입니다."
@@ -48,7 +50,11 @@ public class AuthService {
     }
 
     public Map<String, String> login(String email, String password) {
-        AuthUser user = authUserService.findByEmail(email)
+        if (email == null || email.isBlank() || password == null || password.isBlank()) {
+            throw new IllegalArgumentException("이메일 또는 비밀번호가 올바르지 않습니다.");
+        }
+
+        AuthUser user = authUserService.findByEmail(email.trim().toLowerCase(java.util.Locale.ROOT))
                 .orElseThrow(() -> new IllegalArgumentException(
                         "이메일 또는 비밀번호가 올바르지 않습니다."
                 ));

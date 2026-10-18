@@ -14,7 +14,7 @@ java {
 }
 
 repositories {
-//	mavenLocal()
+	mavenLocal()
 	mavenCentral()
 }
 
@@ -23,7 +23,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-	implementation 'io.github.si-u-gi:kit-auth:1.0.0'
+	implementation 'io.github.si-u-gi:kit-auth:1.0.1'
 }
 
 tasks.named('test') {

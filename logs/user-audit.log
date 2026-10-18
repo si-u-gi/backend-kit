@@ -1,6 +1,0 @@
-Date|Action|Action Status|User ID|Email|IP Address|SessionId|Message|User Agent|Extra Data
-26. 10. 16. 오후 8:44|Registration|Success|1|ds10163@gmail.com|0:0:0:0:0:0:0:1|E1B843C2E50529F3D240BF9A5E6D4A97|Registration Successful|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36|
-26. 10. 16. 오후 8:45|Registration|Failure|unknown||0:0:0:0:0:0:0:1|441F29D337F88914B80ED45BCE039D22|User Already Exists|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36|
-26. 10. 16. 오후 8:45|Registration|Failure|unknown||0:0:0:0:0:0:0:1|441F29D337F88914B80ED45BCE039D22|User Already Exists|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36|
-26. 10. 16. 오후 8:46|Registration|Failure|unknown||0:0:0:0:0:0:0:1|441F29D337F88914B80ED45BCE039D22|User Already Exists|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36|
-26. 10. 16. 오후 9:22|Registration|Success|2|ds10164@gmail.com|0:0:0:0:0:0:0:1|441F29D337F88914B80ED45BCE039D22|Registration Successful|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36|
